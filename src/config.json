@@ -1,0 +1,36 @@
+{
+    "country": "germany",
+    "format": "metric",
+    "screens": 
+    {
+        "clockScreen": 
+        {
+            "showDuration": 10
+        },
+        "scrollScreen": 
+        {
+            "showDuration": 10
+        },
+        "helloScreen": 
+        {
+            "showDuration": 10
+        },
+        "weatherScreen": 
+        {
+            "showDuration": 10,
+            "cityId": 2913366,
+            "apiKey": "000"
+        }, 
+        "spotifyScreen": 
+        {
+            "showDuration": 10,
+            "apiKey": "abcdefg"
+        }, 
+        "mqttNotificationScreen": 
+        {
+            "showDuration": 10,
+            "server": "dietpi.local",
+            "mqttTopic": "/pymatrixdash/"
+        }
+    }
+}

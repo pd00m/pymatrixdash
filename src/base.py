@@ -2,6 +2,7 @@ import argparse
 import time
 import sys
 import os
+import logging
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + '/..'))
 from rgbmatrix import RGBMatrix, RGBMatrixOptions

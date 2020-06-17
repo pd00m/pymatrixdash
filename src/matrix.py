@@ -61,8 +61,35 @@ class Matrix:
 
         return (self.round_normal(x), self.round_normal(y))
 
+    def get_textSize(self, font, text):
+        width = 0
+        height = 0
+
+        text_chars = text.split("\n")
+        offsets = []
+
+        for index, chars in enumerate(text_chars):
+            spacing = 0 if index == 0 else 1
+
+            offset = font.getoffset(chars)
+            offset_x = offset[0]
+            offset_y = offset[1] - height - spacing
+
+            offsets.append((offset_x, offset_y))
+
+            bounding_box = font.getmask(chars).getbbox()
+            if bounding_box is not None:
+                width = bounding_box[2] if bounding_box[2] > width else width
+                height += bounding_box[3] + spacing
+
+        width -= 1
+        height -= 1
+
+        return width
+    
     def draw_text(self, position, text, font, fill=None, align="left", 
                   backgroundColor=None, backgroundOffset=[1, 1, 1, 1]):
+
         width = 0
         height = 0
 
@@ -119,6 +146,7 @@ class Matrix:
             "size": size
         }
 
+    
     def draw_image(self, position, image, align="left"):
         img = Image.open(image)
         position = self.align_position(align, position, img.size)
@@ -133,10 +161,10 @@ class Matrix:
             "size": img.size
         }
     
-    def draw_image_rgba(self, image):
+    def draw_image_rgba(self, image, position):
         img = Image.open(image).convert("RGBA")
         img = img.point(lambda p: p * 0.2)
-        self.image.paste(img, (10, 10))
+        self.image.paste(img, position)
 
     def draw_rectangle(self, position, size, color):
         self.draw.rectangle(
