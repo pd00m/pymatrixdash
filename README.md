@@ -2,7 +2,7 @@
 An LED matrix dashboard written in python
 
 # Installation
-There's no installation script yet, so you have to dot it by hand for now
+There's no installation script yet, so you have to do it by hand for now
 
 Get the following dependencies:
 ```
@@ -14,8 +14,7 @@ Navigate to
 ./rpi-rgb-led-matrix/bindings/python
 ```
 
-To compile the python bindings, use the included makefile
-if you want to use a virtual environment, activate it beforehand
+To compile the python bindings, use the included makefile. If you want to use a virtual environment, activate it beforehand.
 ```
 make build-python PYTHON=$(which python3)
 sudo make install-python PYTHON=$(which python3)
